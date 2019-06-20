@@ -1,0 +1,159 @@
+;;Orellan Silva Luis Adolfo Mateo
+	org 00h
+	ljmp 20h
+	org 20h
+	ljmp inicio
+	
+inicio: mov a,#0ffh
+	mov p0,a
+	;puerto de entrada
+	mov a,#00h
+	mov p1,a
+	;configuracion puerto de salida
+	mov psw,#00h
+	
+aqui:	mov a,p0
+	cjne a,#01h,otro
+	ljmp escribir
+	
+otro:	cjne a,#02h,aqui
+	ljmp leer
+
+escribir:mov a,p0
+	lcall tiempo
+	mov r0,a
+	mov a,p0
+	lcall tiempo
+	mov r1,a
+	mov a,p0
+	lcall tiempo
+	mov r2,a
+	mov a,p0
+	lcall tiempo
+	mov r3,a
+	mov a,p0
+	lcall tiempo
+	mov r4,a
+	mov a,p0
+	lcall tiempo
+	mov r5,a
+	mov a,p0
+	lcall tiempo
+	mov r6,a
+	mov a,p0
+	lcall tiempo
+	mov r7,a
+	
+	mov psw,#08h
+	mov a,p0
+	lcall tiempo
+	mov r0,a
+	mov a,p0
+	lcall tiempo
+	mov r1,a
+	mov a,p0
+	lcall tiempo
+	mov r2,a
+	mov a,p0
+	lcall tiempo
+	mov r3,a
+	mov a,p0
+	lcall tiempo
+	mov r4,a
+	mov a,p0
+	lcall tiempo
+	mov r5,a
+	mov a,p0
+	lcall tiempo
+	mov r6,a
+	mov a,p0
+	lcall tiempo
+	mov r7,a
+	
+	mov psw,#10h
+	mov a,p0
+	lcall tiempo
+	mov r0,a
+	mov a,p0
+	lcall tiempo
+	mov r1,a
+	mov a,p0
+	lcall tiempo
+	mov r2,a
+	mov a,p0
+	lcall tiempo
+	mov r3,a
+	ljmp aqui
+
+leer:	mov psw,#00h
+	mov a,r0
+	mov p1,a
+	lcall tiempo
+	mov a,r1
+	mov p1,a
+	lcall tiempo
+	mov a,r2
+	mov p1,a
+	lcall tiempo
+	mov a,r3
+	mov p1,a
+	lcall tiempo
+	mov a,r4
+	mov p1,a
+	lcall tiempo
+	mov a,r5
+	mov p1,a
+	lcall tiempo
+	mov a,r6
+	mov p1,a
+	lcall tiempo
+	mov a,r7
+	mov p1,a
+	lcall tiempo
+
+	mov psw,#08h
+	mov a,r0
+	mov p1,a
+	lcall tiempo
+	mov a,r1
+	mov p1,a
+	lcall tiempo
+	mov a,r2
+	mov p1,a
+	lcall tiempo
+	mov a,r3
+	mov p1,a
+	lcall tiempo
+	mov a,r4
+	mov p1,a
+	lcall tiempo
+	mov a,r5
+	mov p1,a
+	lcall tiempo
+	mov a,r6
+	mov p1,a
+	lcall tiempo
+	mov a,r7
+	mov p1,a
+	lcall tiempo
+
+	mov psw,#10h
+	mov a,r0
+	mov p1,a
+	lcall tiempo
+	mov a,r1
+	mov p1,a
+	lcall tiempo
+	mov a,r2
+	mov p1,a
+	lcall tiempo
+	mov a,r3
+	mov p1,a
+	lcall tiempo
+	ljmp aqui
+
+tiempo:	nop
+	ret
+
+	end
+	
